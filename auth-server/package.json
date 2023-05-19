@@ -1,0 +1,9 @@
+{
+  "name": "meet_app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://Olexie.github.io/meet_app",
+  "dependencies": {
+    "googleapis": "^59.0.0"
+  }
+}
