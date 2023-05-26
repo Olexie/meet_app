@@ -85,8 +85,7 @@ const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
 
     const response = await fetch(
-      'https://qjxou9peu0.execute-api.eu-central-1.amazonaws.com/dev/api/token' +
-        +'/' +
+      'https://qjxou9peu0.execute-api.eu-central-1.amazonaws.com/dev/api/token/' +
         encodeCode
     );
     if (!response.ok) {
