@@ -30,6 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
