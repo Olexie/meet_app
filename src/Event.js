@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 class Event extends Component {
-  state = { collapsed: true };
+  state = {
+    collapsed: true,
+  };
   handleItemCkicked = () => {
     this.setState((prevState) => ({
       collapsed: !prevState.collapsed,
@@ -13,7 +15,7 @@ class Event extends Component {
     return (
       <div className="event">
         <b className="summary">summary: {event.summary}</b>
-        {!this.hide && (
+        {!this.state.collapsed && (
           <ul className="eventDetails">
             <li>description: {event.description}</li>
             <li>location: {event.location}</li>
