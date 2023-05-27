@@ -73,4 +73,31 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  test('only show 1 event when user selects event number of 1', async () => {
+    const AppWrapper = mount(<App />);
+    const numberOfEvents =
+      AppWrapper.find(NumberOfEvents).find('.numberOfEvents');
+    numberOfEvents.simulate('change', {
+      target: { value: 1 },
+    });
+    const allEvents = await getEvents();
+    expect(AppWrapper.state('events')).toHaveLength(1);
+    AppWrapper.unmount();
+  });
+
+  test('get list of all events but only show the first when user selects "See all cities" and selects event number of 1', async () => {
+    const AppWrapper = mount(<App />);
+    const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
+    await suggestionItems.at(suggestionItems.length - 1).simulate('click');
+    const numberOfEvents =
+      AppWrapper.find(NumberOfEvents).find('.numberOfEvents');
+    numberOfEvents.simulate('change', {
+      target: { value: 1 },
+    });
+    const allEvents = await getEvents();
+    expect(AppWrapper.state('events')).toEqual(allEvents.slice(0, 1));
+    expect(AppWrapper.state('events')).toHaveLength(1);
+    AppWrapper.unmount();
+  });
 });

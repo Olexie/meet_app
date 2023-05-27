@@ -10,6 +10,7 @@ class NumberOfEvents extends Component {
     this.setState({
       query: value,
     });
+    this.props.updateEvents(null, value);
   };
 
   render() {

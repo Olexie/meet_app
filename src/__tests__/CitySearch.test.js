@@ -26,6 +26,7 @@ describe('<CitySearch /> component', () => {
     const query = CitySearchWrapper.state('query');
     expect(CitySearchWrapper.find('.city').prop('value')).toBe(query);
   });
+
   test('change state when text input changes', () => {
     //const CitySearchWrapper = shallow(<CitySearch />);
     CitySearchWrapper.setState({
@@ -35,6 +36,7 @@ describe('<CitySearch /> component', () => {
     CitySearchWrapper.find('.city').simulate('change', eventObject);
     expect(CitySearchWrapper.state('query')).toBe('Berlin');
   });
+
   test('render list of suggestions correctly', () => {
     const locations = extractLocations(mockData);
     //const CitySearchWrapper = shallow(<CitySearch />);
@@ -49,6 +51,7 @@ describe('<CitySearch /> component', () => {
       );
     }
   });
+
   test('suggestion list match the query when changed', () => {
     CitySearchWrapper.setState({ query: '', suggestions: [] });
     CitySearchWrapper.find('.city').simulate('change', {
