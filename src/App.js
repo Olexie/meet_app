@@ -42,15 +42,10 @@ class App extends Component {
           this.state.numberOfEvents
         );
         this.setState({
+          selectedLocation: location,
           events: locationEventsFiltered,
         });
       }
-    });
-  };
-
-  updateNumEvents = (num_events) => {
-    this.setState({
-      events_num_filtered: this.state.events.slice(0, num_events),
     });
   };
 

@@ -100,4 +100,26 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toHaveLength(1);
     AppWrapper.unmount();
   });
+
+  test('get list of all events matching the city selected by the user but only show 1 if he selects event number of 1', async () => {
+    const AppWrapper = mount(<App />);
+    const CitySearchWrapper = AppWrapper.find(CitySearch);
+    const locations = extractLocations(mockData);
+    CitySearchWrapper.setState({ suggestions: locations });
+    const suggestions = CitySearchWrapper.state('suggestions');
+    const selectedIndex = Math.floor(Math.random() * suggestions.length);
+    const selectedCity = suggestions[selectedIndex];
+    await CitySearchWrapper.instance().handleItemClicked(selectedCity);
+    const numberOfEvents =
+      AppWrapper.find(NumberOfEvents).find('.numberOfEvents');
+    numberOfEvents.simulate('change', {
+      target: { value: 1 },
+    });
+    const allEvents = await getEvents();
+    const eventsToShow = allEvents.filter(
+      (event) => event.location === selectedCity
+    );
+    expect(AppWrapper.state('events')).toHaveLength(1);
+    AppWrapper.unmount();
+  });
 });
