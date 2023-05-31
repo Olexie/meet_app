@@ -17,6 +17,7 @@ class CitySearch extends Component {
           value={this.state.query}
           onChange={this.handleInputChanged}
           onFocus={() => {
+            this.setState({ suggestions: this.props.locations });
             this.setState({ showSuggestions: true });
           }}
         />
