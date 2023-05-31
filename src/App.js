@@ -56,7 +56,7 @@ class App extends Component {
         this.setState({
           events,
           locations: extractLocations(events),
-          numberOfEvents: events.length,
+          numberOfEvents: events.length <= 32 ? events.length : 32,
           selectedLocation: 'all',
         });
       }
