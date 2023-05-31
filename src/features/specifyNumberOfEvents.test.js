@@ -9,7 +9,7 @@ import { loadFeature, defineFeature } from 'jest-cucumber';
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
 defineFeature(feature, (test) => {
-  test('When user hasn’t specified a number, 32 is the default number', ({
+  test('When user hasn’t specified a number show all events', ({
     given,
     when,
     then,

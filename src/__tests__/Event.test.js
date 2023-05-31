@@ -10,21 +10,19 @@ describe('<Event /> component', () => {
     EventWrapper = shallow(<Event event={event} />);
   });
   test('render details', () => {
-    expect(EventWrapper.find('li')).toHaveLength(4);
+    expect(EventWrapper.find('li')).toHaveLength(3);
   });
 
   test('correct details rendered', () => {
     const summary = EventWrapper.find('.summary');
-    const eventDetails = EventWrapper.find('.eventDetails li');
+    const extraInfo = EventWrapper.find('.extraInfo li');
 
-    // expect(summary).toHaveLength(1);
-    expect(summary.text()).toEqual(`summary: ${event.summary}`);
-    expect(eventDetails.at(0).text()).toBe(`description: ${event.description}`);
-    expect(eventDetails.at(1).text()).toBe(`location: ${event.location}`);
-    expect(eventDetails.at(2).text()).toBe(
+    expect(summary.text()).toEqual(`Summary: ${event.summary}`);
+    expect(extraInfo.at(0).text()).toBe(`location: ${event.location}`);
+    expect(extraInfo.at(1).text()).toBe(
       `start: ${new Date(event.start.dateTime).toISOString()}`
     );
-    expect(eventDetails.at(3).text()).toBe(
+    expect(extraInfo.at(2).text()).toBe(
       `finish: ${new Date(event.end.dateTime).toISOString()}`
     );
   });
@@ -33,5 +31,7 @@ describe('<Event /> component', () => {
     const display = EventWrapper.find('.showDetails');
     display.simulate('click');
     expect(EventWrapper.state('collapsed')).toBe(false);
+    const eventDetails = EventWrapper.find('.eventDetails li');
+    expect(eventDetails.at(0).text()).toBe(`description: ${event.description}`);
   });
 });

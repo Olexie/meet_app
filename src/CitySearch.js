@@ -10,7 +10,7 @@ class CitySearch extends Component {
   render() {
     return (
       <div className="CitySearch">
-        value={this.state.query}
+        Choose your nearest city
         <input
           type="text"
           className="city"

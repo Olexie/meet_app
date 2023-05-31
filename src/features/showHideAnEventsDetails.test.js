@@ -36,7 +36,7 @@ defineFeature(feature, (test) => {
     });
 
     then('the details should be shown', () => {
-      expect(EventWrapper.find('.eventDetails li')).toHaveLength(4);
+      expect(EventWrapper.find('.eventDetails li')).toHaveLength(1);
     });
   });
 

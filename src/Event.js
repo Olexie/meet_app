@@ -4,7 +4,7 @@ class Event extends Component {
   state = {
     collapsed: true,
   };
-  handleItemCkicked = () => {
+  handleItemClicked = () => {
     this.setState((prevState) => ({
       collapsed: !prevState.collapsed,
     }));
@@ -14,18 +14,20 @@ class Event extends Component {
     // const { collapsed } = this.state;
     return (
       <div className="event">
-        <b className="summary">summary: {event.summary}</b>
+        <b className="summary">Summary: {event.summary}</b>
+        <ul className="extraInfo">
+          <li>location: {event.location}</li>
+          <li>start: {new Date(event.start.dateTime).toISOString()}</li>
+          <li>finish: {new Date(event.end.dateTime).toISOString()}</li>
+        </ul>
         {!this.state.collapsed && (
           <ul className="eventDetails">
             <li>description: {event.description}</li>
-            <li>location: {event.location}</li>
-            <li>start: {new Date(event.start.dateTime).toISOString()}</li>
-            <li>finish: {new Date(event.end.dateTime).toISOString()}</li>
           </ul>
         )}
         <button
           className="showDetails"
-          onClick={() => this.handleItemCkicked()}
+          onClick={() => this.handleItemClicked()}
         >
           Show Details
         </button>

@@ -56,7 +56,7 @@ class App extends Component {
         this.setState({
           events,
           locations: extractLocations(events),
-          numberOfEvents: 32,
+          numberOfEvents: events.length,
           selectedLocation: 'all',
         });
       }
@@ -70,12 +70,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="name">Meet App</div>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
+        <NumberOfEvents
+          updateEvents={this.updateEvents}
+          numberOfEvents={this.state.numberOfEvents}
+        />
         <EventList events={this.state.events} />
-        <NumberOfEvents updateEvents={this.updateEvents} />
       </div>
     );
   }
