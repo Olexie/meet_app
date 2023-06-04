@@ -18,13 +18,13 @@ function WelcomeScreen(props) {
                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                        alt="Google sign-in"
                      />
+                    </div>
                     <button onClick={() => {props.getAccessToken()}}
                       rel='nofollow noopener'
                       class='btn-text'
                     >
                         <b>Sign in with Google</b>
                     </button>
-                    </div>
                 </div>
             </div>
             <a href="https://olexie.github.io/meet_app/public/privacy.html" rel="nofollow noopener">
