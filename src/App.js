@@ -4,6 +4,7 @@ import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import { WarningAlert } from './Alert';
 import { extractLocations, getEvents } from './api';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     selectedLocation: 'all',
+    warningText: '',
   };
 
   updateEvents = (location, eventCount) => {
@@ -51,6 +53,7 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
+    this.promptOfflineWarning();
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
@@ -67,6 +70,14 @@ class App extends Component {
     this.mounted = false;
   }
 
+  promptOfflineWarning = () => {
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'You are offline, check your internet connection',
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -79,6 +90,7 @@ class App extends Component {
           updateEvents={this.updateEvents}
           numberOfEvents={this.state.numberOfEvents}
         />
+        <WarningAlert text={this.state.warningText} />
         <EventList events={this.state.events} />
       </div>
     );
