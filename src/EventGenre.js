@@ -16,7 +16,7 @@ const EventGenre = ({ events }) => {
     setData(getData());
   }, [events]);
 
-  const [data, setData] = useState([]);
+  const [data, setD ata] = useState([]);
 
   function getData() {
     const data = genres.map((genre, index) => {

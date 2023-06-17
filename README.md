@@ -114,3 +114,7 @@ Scenario 1:  The chart with upcoming events according to category.
                    Given: User received a list of all upcoming events
                    When : the user presses the button “Categorize” and selects a desired category
                    Then : the user will see a chart, showing list of upcoming events for the chosen city, according to chosen category
+
+
+
+                   link: https://olexie.github.io/meet_app/
